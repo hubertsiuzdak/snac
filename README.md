@@ -1,6 +1,6 @@
-# [WIP] SNAC 🍿
+# SNAC 🍿
 
-Multi-**S**cale **N**eural **A**udio **C**odec (SNAC) compressess 44.1 kHz audio into discrete codes at a low bitrate.
+Multi-**S**cale **N**eural **A**udio **C**odec (SNAC) compressess audio into discrete codes at a low bitrate.
 
 ## Overview
 
@@ -14,6 +14,15 @@ consistent structure of an audio track for ~3 minutes.
 
 ![snac.png](img%2Fsnac.png)
 
+## Pretrained models
+
+| Model                                                                       | Bitrate  | Sample Rate | 
+|-----------------------------------------------------------------------------|----------|-------------|
+| [hubertsiuzdak/snac_32khz](https://huggingface.co/hubertsiuzdak/snac_32khz) | 1.9 kbps | 32 kHz      | 
+| [hubertsiuzdak/snac_44khz](https://huggingface.co/hubertsiuzdak/snac_44khz) | 2.6 kbps | 44 kHz      |
+
+These models were trained mostly on music. 
+
 ## Usage
 
 Install it using:
@@ -22,18 +31,14 @@ Install it using:
 pip install snac
 ```
 
-A pretrained model that compresses audio into discrete codes at a 2.2 kbps bitrate is available
-at [Hugging Face](https://huggingface.co/hubertsiuzdak/snac). It uses 4 RVQ levels with token rates of 12.5, 25, 50, and
-100 Hz.
-
 To encode (and reconstruct) audio with SNAC in Python, use the following code:
 
 ```python
 import torch
 from snac import SNAC
 
-model = SNAC.from_pretrained("hubertsiuzdak/snac").eval().cuda()
-audio = torch.randn(1, 1, 44100).cuda()  # B, 1, T
+model = SNAC.from_pretrained("hubertsiuzdak/snac_32khz").eval().cuda()
+audio = torch.randn(1, 1, 32000).cuda()  # B, 1, T
 
 with torch.inference_mode():
     audio_hat, _, codes, _, _ = model(audio)
@@ -44,7 +49,7 @@ resolution.
 
 ```
 >>> [code.shape[1] for code in codes]
-[13, 26, 52, 104]
+[12, 24, 48, 96]
 ```
 
 ## Acknowledgements
