@@ -4,6 +4,8 @@ import torch
 import torch.nn as nn
 from torch.nn.utils.parametrizations import weight_norm
 
+from .attention import LocalMHA
+
 
 class Encoder(nn.Module):
     def __init__(
@@ -11,6 +13,7 @@ class Encoder(nn.Module):
         d_model=64,
         strides=[3, 3, 7, 7],
         depthwise=False,
+        attn_window_size=32,
     ):
         super().__init__()
         layers = [WNConv1d(1, d_model, kernel_size=7, padding=3)]
@@ -18,9 +21,10 @@ class Encoder(nn.Module):
             d_model *= 2
             groups = d_model // 2 if depthwise else 1
             layers += [EncoderBlock(output_dim=d_model, stride=stride, groups=groups)]
+        if attn_window_size is not None:
+            layers += [LocalMHA(dim=d_model, window_size=attn_window_size)]
         groups = d_model if depthwise else 1
         layers += [
-            Snake1d(d_model),
             WNConv1d(d_model, d_model, kernel_size=7, padding=3, groups=groups),
         ]
         self.block = nn.Sequential(*layers)
@@ -37,17 +41,20 @@ class Decoder(nn.Module):
         rates,
         noise=False,
         depthwise=False,
+        attn_window_size=32,
         d_out=1,
     ):
         super().__init__()
         if depthwise:
             layers = [
+                WNConv1d(input_channel, input_channel, kernel_size=7, padding=3, groups=input_channel),
                 WNConv1d(input_channel, channels, kernel_size=1),
-                Snake1d(channels),
-                WNConv1d(channels, channels, kernel_size=7, padding=3, groups=channels),
             ]
         else:
             layers = [WNConv1d(input_channel, channels, kernel_size=7, padding=3)]
+
+        if attn_window_size is not None:
+            layers += [LocalMHA(dim=channels, window_size=attn_window_size)]
 
         for i, stride in enumerate(rates):
             input_dim = channels // 2**i
@@ -111,13 +118,14 @@ class EncoderBlock(nn.Module):
 class NoiseBlock(nn.Module):
     def __init__(self, dim):
         super().__init__()
-        self.scale = nn.Parameter(torch.zeros(dim, 1))
+        self.linear = WNConv1d(dim, dim, kernel_size=1, bias=False)
 
     def forward(self, x):
         B, C, T = x.shape
         noise = torch.randn((B, 1, T), device=x.device, dtype=x.dtype)
-        noise_scaled = noise * self.scale
-        x = x + noise_scaled
+        h = self.linear(x)
+        n = noise * h
+        x = x + n
         return x
 
 
