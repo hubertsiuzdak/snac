@@ -12,11 +12,13 @@ from .vq import ResidualVectorQuantize
 class SNAC(nn.Module):
     def __init__(
         self,
+        sampling_rate=44100,
         encoder_dim=64,
         encoder_rates=[3, 3, 7, 7],
         latent_dim=None,
         decoder_dim=1536,
         decoder_rates=[7, 7, 3, 3],
+        attn_window_size=32,
         codebook_size=4096,
         codebook_dim=8,
         vq_strides=[8, 4, 2, 1],
@@ -24,6 +26,7 @@ class SNAC(nn.Module):
         depthwise=True,
     ):
         super().__init__()
+        self.sampling_rate = sampling_rate
         self.encoder_dim = encoder_dim
         self.encoder_rates = encoder_rates
         self.decoder_dim = decoder_dim
@@ -37,6 +40,7 @@ class SNAC(nn.Module):
         self.codebook_size = codebook_size
         self.codebook_dim = codebook_dim
         self.vq_strides = vq_strides
+        self.attn_window_size = attn_window_size
         self.quantizer = ResidualVectorQuantize(
             input_dim=latent_dim,
             codebook_size=codebook_size,
@@ -53,7 +57,7 @@ class SNAC(nn.Module):
 
     def preprocess(self, audio_data):
         length = audio_data.shape[-1]
-        pad_to = self.hop_length * self.vq_strides[0]
+        pad_to = self.hop_length * self.attn_window_size
         right_pad = math.ceil(length / pad_to) * pad_to - length
         audio_data = nn.functional.pad(audio_data, (0, right_pad))
         return audio_data
@@ -76,6 +80,7 @@ class SNAC(nn.Module):
     @classmethod
     def from_pretrained(cls, repo_id, **kwargs):
         from huggingface_hub import hf_hub_download
+
         config_path = hf_hub_download(repo_id=repo_id, filename="config.json", **kwargs)
         model_path = hf_hub_download(repo_id=repo_id, filename="pytorch_model.bin", **kwargs)
         model = cls.from_config(config_path)
