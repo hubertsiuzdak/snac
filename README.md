@@ -1,6 +1,10 @@
 # SNAC 🍿
 
-Multi-**S**cale **N**eural **A**udio **C**odec (SNAC) compressess audio into discrete codes at a low bitrate.
+Multi-**S**cale **N**eural **A**udio **C**odec (SNAC) compresses audio into discrete codes at a low bitrate.
+
+https://github.com/hubertsiuzdak/snac/assets/35269911/e8adac68-d3f1-4fc1-8cf9-f48d9bcd95ed
+
+🎧 More audio samples available at https://hubertsiuzdak.github.io/snac/
 
 ## Overview
 
