@@ -2,7 +2,9 @@
 
 Multi-**S**cale **N**eural **A**udio **C**odec (SNAC) compresses audio into discrete codes at a low bitrate.
 
-https://github.com/hubertsiuzdak/snac/assets/35269911/e8adac68-d3f1-4fc1-8cf9-f48d9bcd95ed
+| 🎸 Music samples                                                                                         | 🗣️ Speech samples                                                                                       |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| <video src='https://github.com/hubertsiuzdak/snac/assets/35269911/e8adac68-d3f1-4fc1-8cf9-f48d9bcd95ed'> | <video src='https://github.com/hubertsiuzdak/snac/assets/35269911/65ac2547-c711-49d4-8a5d-64d52e6d6ba1'> |
 
 🎧 More audio samples available at https://hubertsiuzdak.github.io/snac/
 
@@ -20,12 +22,13 @@ consistent structure of an audio track for ~3 minutes.
 
 ## Pretrained models
 
-| Model                                                                       | Bitrate  | Sample Rate | 
-|-----------------------------------------------------------------------------|----------|-------------|
-| [hubertsiuzdak/snac_32khz](https://huggingface.co/hubertsiuzdak/snac_32khz) | 1.9 kbps | 32 kHz      | 
-| [hubertsiuzdak/snac_44khz](https://huggingface.co/hubertsiuzdak/snac_44khz) | 2.6 kbps | 44 kHz      |
+Currently, all models support only single audio channel (mono).
 
-These models were trained mostly on music. 
+| Model                                                                       | Bitrate   | Sample Rate | Params | Recommended use case     | 
+|-----------------------------------------------------------------------------|-----------|-------------|--------|--------------------------|
+| [hubertsiuzdak/snac_24khz](https://huggingface.co/hubertsiuzdak/snac_24khz) | 0.98 kbps | 24 kHz      | 19.8 M | 🗣️ Speech               | 
+| [hubertsiuzdak/snac_32khz](https://huggingface.co/hubertsiuzdak/snac_32khz) | 1.9 kbps  | 32 kHz      | 54.5 M | 🎸 Music / Sound Effects | 
+| [hubertsiuzdak/snac_44khz](https://huggingface.co/hubertsiuzdak/snac_44khz) | 2.6 kbps  | 44 kHz      | 54.5 M | 🎸 Music / Sound Effects |
 
 ## Usage
 
