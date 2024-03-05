@@ -41,6 +41,13 @@
 ### Music samples
 
 <table>
+    <colgroup>
+    <col style="width: 180px;">
+    <col style="width: 180px;">
+    <col style="width: 180px;">
+    <col style="width: 180px;">
+    <col style="width: 180px;">
+  </colgroup>
   <tr>
     <th>Reference: opus (96 kbps)</th>
     <th>encodec_32khz (2.2 kbps)</th>
@@ -49,52 +56,52 @@
     <th style="color: green;">snac_44khz (2.6 kbps)</th>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/hey-ya.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/rickroll.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/acdc.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/korale.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/queen.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/swan.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
   <tr>
-    <td><audio controls preload="none"><source src="audio/music/ref/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/encodec/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/dac/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_32khz/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
-    <td><audio controls preload="none"><source src="audio/music/snac_44khz/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/ref/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/encodec/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/dac/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_32khz/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
+    <td><audio controls preload="none" style="width: 175px;"><source src="audio/music/snac_44khz/snoop.opus" type="audio/mp3">Your browser does not support the audio element.</audio></td>
   </tr>
 </table>
