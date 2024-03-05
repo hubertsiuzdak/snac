@@ -35,7 +35,12 @@ class SNAC(nn.Module):
             latent_dim = encoder_dim * (2 ** len(encoder_rates))
         self.latent_dim = latent_dim
         self.hop_length = np.prod(encoder_rates)
-        self.encoder = Encoder(encoder_dim, encoder_rates, depthwise=depthwise)
+        self.encoder = Encoder(
+            encoder_dim,
+            encoder_rates,
+            depthwise=depthwise,
+            attn_window_size=attn_window_size,
+        )
         self.n_codebooks = len(vq_strides)
         self.codebook_size = codebook_size
         self.codebook_dim = codebook_dim
@@ -53,11 +58,13 @@ class SNAC(nn.Module):
             decoder_rates,
             noise,
             depthwise=depthwise,
+            attn_window_size=attn_window_size,
         )
 
     def preprocess(self, audio_data):
         length = audio_data.shape[-1]
-        pad_to = self.hop_length * self.attn_window_size
+        lcm = math.lcm(self.vq_strides[0], self.attn_window_size or 1)
+        pad_to = self.hop_length * lcm
         right_pad = math.ceil(length / pad_to) * pad_to - length
         audio_data = nn.functional.pad(audio_data, (0, right_pad))
         return audio_data
