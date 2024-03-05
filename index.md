@@ -6,7 +6,7 @@
 
 ## 🎧 Audio samples from SNAC: Multi-Scale Neural Audio Codec
 
-🔗 GitHub repository: https://github.com/hubertsiuzdak/snac/
+🔗 [GitHub repository](https://github.com/hubertsiuzdak/snac)
 
 ### Speech samples
 
