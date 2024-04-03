@@ -1,5 +1,6 @@
 import json
 import math
+from typing import List, Tuple
 
 import numpy as np
 import torch
@@ -69,13 +70,24 @@ class SNAC(nn.Module):
         audio_data = nn.functional.pad(audio_data, (0, right_pad))
         return audio_data
 
-    def forward(self, audio_data):
+    def forward(self, audio_data: torch.Tensor) -> Tuple[torch.Tensor, List[torch.Tensor]]:
         length = audio_data.shape[-1]
         audio_data = self.preprocess(audio_data)
         z = self.encoder(audio_data)
-        z, codes, commitment_loss, codebook_loss = self.quantizer(z)
-        x = self.decoder(z)
-        return x[..., :length], z, codes, commitment_loss, codebook_loss
+        z_q, codes = self.quantizer(z)
+        audio_hat = self.decoder(z_q)
+        return audio_hat[..., :length], codes
+
+    def encode(self, audio_data: torch.Tensor) -> List[torch.Tensor]:
+        audio_data = self.preprocess(audio_data)
+        z = self.encoder(audio_data)
+        _, codes = self.quantizer(z)
+        return codes
+
+    def decode(self, codes: List[torch.Tensor]) -> torch.Tensor:
+        z_q = self.quantizer.from_codes(codes)
+        audio_hat = self.decoder(z_q)
+        return audio_hat
 
     @classmethod
     def from_config(cls, config_path):

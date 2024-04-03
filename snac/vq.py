@@ -26,10 +26,6 @@ class VectorQuantize(nn.Module):
         # Factorized codes (ViT-VQGAN) Project input into low-dimensional space
         z_e = self.in_proj(z)  # z_e : (B x D x T)
         z_q, indices = self.decode_latents(z_e)
-
-        commitment_loss = F.mse_loss(z_e, z_q.detach(), reduction="none").mean([1, 2])
-        codebook_loss = F.mse_loss(z_q, z_e.detach(), reduction="none").mean([1, 2])
-
         z_q = z_e + (z_q - z_e).detach()  # noop in forward pass, straight-through gradient estimator in backward pass
 
         z_q = self.out_proj(z_q)
@@ -37,7 +33,7 @@ class VectorQuantize(nn.Module):
         if self.stride > 1:
             z_q = z_q.repeat_interleave(self.stride, dim=-1)
 
-        return z_q, commitment_loss, codebook_loss, indices
+        return z_q, indices
 
     def embed_code(self, embed_id):
         return F.embedding(embed_id, self.codebook.weight)
@@ -83,15 +79,20 @@ class ResidualVectorQuantize(nn.Module):
     def forward(self, z):
         z_q = 0
         residual = z
-        commitment_loss = 0
-        codebook_loss = 0
         codes = []
         for i, quantizer in enumerate(self.quantizers):
-            z_q_i, commitment_loss_i, codebook_loss_i, indices_i = quantizer(residual)
+            z_q_i, indices_i = quantizer(residual)
             z_q = z_q + z_q_i
             residual = residual - z_q_i
-            commitment_loss += commitment_loss_i.mean()
-            codebook_loss += codebook_loss_i.mean()
             codes.append(indices_i)
 
-        return z_q, codes, commitment_loss, codebook_loss
+        return z_q, codes
+
+    def from_codes(self, codes: List[torch.Tensor]) -> torch.Tensor:
+        z_q = 0.0
+        for i in range(self.n_codebooks):
+            z_p_i = self.quantizers[i].decode_code(codes[i])
+            z_q_i = self.quantizers[i].out_proj(z_p_i)
+            z_q_i = z_q_i.repeat_interleave(self.quantizers[i].stride, dim=-1)
+            z_q += z_q_i
+        return z_q
