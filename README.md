@@ -38,17 +38,25 @@ Install it using:
 pip install snac
 ```
 
-To encode (and reconstruct) audio with SNAC in Python, use the following code:
+To encode (and decode) audio with SNAC in Python, use the following code:
 
 ```python
 import torch
 from snac import SNAC
 
 model = SNAC.from_pretrained("hubertsiuzdak/snac_32khz").eval().cuda()
-audio = torch.randn(1, 1, 32000).cuda()  # B, 1, T
+audio = torch.randn(1, 1, 32000).cuda()  # placeholder for actual audio with shape (B, 1, T)
 
 with torch.inference_mode():
-    audio_hat, _, codes, _, _ = model(audio)
+    codes = model.encode(audio)
+    audio_hat = model.decode(codes)
+```
+
+You can also encode and reconstruct in a single call:
+
+```python
+with torch.inference_mode():
+    audio_hat, codes = model(audio)
 ```
 
 ⚠️ Note that `codes` is a list of token sequences of variable lengths, each corresponding to a different temporal
