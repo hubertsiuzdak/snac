@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Siuzdak
+    given-names: Hubert
+title: "SNAC: Multi-Scale Neural Audio Codec"
+date-released: 2024-02-27
+url: "https://github.com/hubertsiuzdak/snac"
