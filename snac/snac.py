@@ -8,7 +8,7 @@ from torch import nn
 
 from .layers import Encoder, Decoder
 from .vq import ResidualVectorQuantize
-from pathlib import Path
+import os
 
 class SNAC(nn.Module):
     def __init__(
@@ -99,15 +99,15 @@ class SNAC(nn.Module):
     @classmethod
     def from_pretrained(cls, repo_id, **kwargs):
         from huggingface_hub import hf_hub_download
-        if not isinstance(repo_id, Path):
+        if not os.path.isdir(repo_id):
             config_path = hf_hub_download(repo_id=repo_id, filename="config.json", **kwargs)
             model_path = hf_hub_download(repo_id=repo_id, filename="pytorch_model.bin", **kwargs)
             model = cls.from_config(config_path)
             state_dict=torch.load(model_path, map_location="cpu")
             
-        if isinstance(repo_id, Path):
-            model = cls.from_config(repo_id.joinpath("config.json"))
-            state_dict = torch.load(repo_id.joinpath("pytorch_model.bin"), map_location="cpu")
+        if os.path.isdir(repo_id):
+            model = cls.from_config(repo_id+"/config.json")
+            state_dict = torch.load(repo_id+"/pytorch_model.bin", map_location="cpu")
         model.load_state_dict(state_dict)
         model.eval()
         return model
