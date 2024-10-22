@@ -8,6 +8,8 @@
 
 🔗 [GitHub repository](https://github.com/hubertsiuzdak/snac)
 
+📖 [arXiv paper](https://arxiv.org/abs/2410.14411)
+
 ### Speech samples
 
 <table>
